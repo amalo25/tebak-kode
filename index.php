@@ -41,18 +41,6 @@ $app->post('/', function ($request, $response)
 	// init bot
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-
-	 function string_to_ascii($string)
-   	 {
-        $ascii = NULL;
-     
-        for ($i = 0; $i < strlen($string); $i++) 
-        { 
-        	$ascii += ord($string[$i]); 
-        }
-     
-        return($ascii);
-   	 }
 	
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
@@ -63,8 +51,7 @@ $app->post('/', function ($request, $response)
 			if($event['message']['type'] == 'text')
 			{
 				// send same message as reply to user
-				$evenest= string_to_ascii('text');
-				$result = $bot->replyText($event['replyToken'], $event['message'][$evenest]);
+				$result = $bot->replyText($event['replyToken'], $event['message'][$ascii = 0 + 'text']);
 
 				// or we can use pushMessage() instead to send reply message
 				//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($event['message']['text']);
