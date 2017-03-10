@@ -53,8 +53,8 @@ $app->post('/', function ($request, $response)
 				$result = $bot->replyText($event['replyToken'], $event['message']['text']);
 
 				// or we can use pushMessage() instead to send reply message
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($event['message']['text']);
-				$result = $bot->pushMessage($event['source']['userId'], $textMessageBuilder);
+				//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($event['message']['text']);
+				//$result = $bot->pushMessage($event['source']['userId'], $textMessageBuilder);
 				
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 			}
