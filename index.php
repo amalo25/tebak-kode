@@ -51,7 +51,7 @@ $app->post('/', function ($request, $response)
 			if($event['message']['type'] == 'text')
 			{
 				// send same message as reply to user
-				$result = $bot->replyText($event['replyToken'], $event['message'][$ascii = 0 + 'text']);
+				$result = $bot->replyText($event['replyToken'], $event['message']['text']);
 
 				// or we can use pushMessage() instead to send reply message
 				//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($event['message']['text']);
